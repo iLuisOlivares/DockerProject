@@ -51,3 +51,36 @@ Puedes crear un devcontainer de la siguiente manera:
   // "remoteUser": "devcontainer"
 }
 ```
+
+# Usando Docker compose
+
+## Crear un archivo docker-compose.yml como este:
+
+```yml
+version: "3.9"
+
+services:
+  node-beta:
+    image: nodealpha
+    container_name: projectnode
+    ports:
+      - 5000:3000
+    build: .
+    command: node server.js
+
+  db:
+    image: mongo
+    container_name: mymongo
+    ports:
+      - 27017:27017
+```
+
+## Ejecutar el comando
+
+```bash
+docker-compose up
+```
+
+```bash
+docker-compose up --build
+```
